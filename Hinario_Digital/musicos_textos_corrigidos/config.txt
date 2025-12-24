@@ -1,0 +1,16 @@
+# --- CONFIGURAÇÃO DE TEMPO ---
+BPM: 61
+METRO_INFERIOR: 4
+UNIDADE_TEMPO: sm # Define que a Semínima (sm) vale 1 Tempo.
+
+# --- MAPA DE DURAÇÃO (Fator de Semínima = 1.0) ---
+# Todas as notas são um múltiplo ou fração da nota definida em UNIDADE_TEMPO
+sm: 1.0
+m: 2.0         # Mínima = 2 x Semínima
+c: 0.5         # Colcheia = 0.5 x Semínima
+sc: 0.25       # Semicolcheia = 0.25 x Semínima
+sb: 4.0        # Semibreve = 4 x Semínima
+Cp: 0.75       # Colcheia pontuada = 0.75 x Semínima
+rc: 0.0        # Pausa: Duração zero
+rl: 0.0        # Pausa Longa: Duração zero
+_fermata: 1.5  # Fator de alongamento (1.5x a nota base)

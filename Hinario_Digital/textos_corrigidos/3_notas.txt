@@ -1,0 +1,12 @@
+Estrofes
+Sm,c,c,sm,c,c,sm,c,c,sm,sm,
+Sm,c,c,Sm,c,c,sm,c,c,m,
+Sm,c,c,sm,c,c,sm,c,c,sm,sm
+Sm,c,c,sm,c,c,sm,c,c,m
+
+Coro
+sm,   c, c, cp, sc, sm,  sm,c, c,  cp,  sc,sm,
+sm,  c,   c,  c,   c,  sm    sm, c,   c,   m
+sm,  c,c, cp, sc, sm,  sm,  c,  c,  m
+
+

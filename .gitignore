@@ -1,0 +1,24 @@
+# Ignorar pastas de imagens
+imagens/
+output/
+json_notas/
+
+# Ignorar arquivos de imagem soltos 
+*.png
+*.jpg
+*.jpeg
+*.svg
+*.pdf
+*.exe
+*.pkg
+
+# Ignorar arquivos temporários do Python e do VS Code
+__pycache__/
+*.pyc
+.vscode/
+.env
+
+# Ignorar pastas do PyInstaller (executáveis)
+build/
+dist/
+*.spec

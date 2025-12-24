@@ -1,0 +1,279 @@
+{
+    "titulo": "3. Fais-Nous ENTENDRE TA voix",
+    "BPM": 60,
+    "compasso": "4/4",
+    "estrofes": [
+        {
+            "numero": 1,
+            "tipo": "Estrofe",
+            "linhas": [
+                {
+                    "texto_silabado": "Fais- nous en- ten- dre Ta voix si glo- rieu- se, ''",
+                    "notas_codes": [
+                        "Sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "sm",
+                        "rc"
+                    ]
+                },
+                {
+                    "texto_silabado": "Ô no- tre Maî- tre, fi- dè- le Sau- veur; ''",
+                    "notas_codes": [
+                        "Sm",
+                        "c",
+                        "c",
+                        "Sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "c",
+                        "c",
+                        "m",
+                        "rc"
+                    ]
+                },
+                {
+                    "texto_silabado": "Ta sain- te‿é- gli- se, é- pou- se pré- cieu- se, ''",
+                    "notas_codes": [
+                        "Sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "sm",
+                        "rc"
+                    ]
+                },
+                {
+                    "texto_silabado": "Doit à Toi seul tout l'a- mour et l'hon- neur. \"",
+                    "notas_codes": [
+                        "Sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "c",
+                        "c",
+                        "m",
+                        "rl"
+                    ]
+                }
+            ]
+        },
+        {
+            "numero": 0,
+            "tipo": "Coro",
+            "linhas": [
+                {
+                    "texto_silabado": "C'est Ta su- bli- me voix, ô Ré- demp- teur ai- mé, ''",
+                    "notas_codes": [
+                        "sm",
+                        "c",
+                        "c",
+                        "cp",
+                        "sc",
+                        "sm",
+                        "sm",
+                        "c",
+                        "c",
+                        "cp",
+                        "sc",
+                        "sm",
+                        "rc"
+                    ]
+                },
+                {
+                    "texto_silabado": "Qui nous con- duit aux cieux, le saint foy- er; ''",
+                    "notas_codes": [
+                        "sm",
+                        "c",
+                        "c",
+                        "c",
+                        "c",
+                        "sm    sm",
+                        "c",
+                        "c",
+                        "m",
+                        "sm",
+                        "rc"
+                    ]
+                },
+                {
+                    "texto_silabado": "Par Ta Pa- ro- le, viens nous con- so- ler. \"",
+                    "notas_codes": [
+                        "sm",
+                        "c",
+                        "c",
+                        "cp",
+                        "sc",
+                        "sm",
+                        "sm",
+                        "c",
+                        "c",
+                        "m",
+                        "rl"
+                    ]
+                }
+            ]
+        },
+        {
+            "numero": 2,
+            "tipo": "Estrofe",
+            "linhas": [
+                {
+                    "texto_silabado": "Cé- les- te‿É- poux, Jé- sus Christ, Roi su- prê- me, ''",
+                    "notas_codes": [
+                        "Sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "sm",
+                        "rc"
+                    ]
+                },
+                {
+                    "texto_silabado": "Par Ton a- mour, con- duis nous, Ré- demp- teur; ''",
+                    "notas_codes": [
+                        "Sm",
+                        "c",
+                        "c",
+                        "Sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "c",
+                        "c",
+                        "m",
+                        "rc"
+                    ]
+                },
+                {
+                    "texto_silabado": "Nous con- tem- plons par la foi, sur la ter- re, ''",
+                    "notas_codes": [
+                        "Sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "sm",
+                        "rc"
+                    ]
+                },
+                {
+                    "texto_silabado": "Ta ma- jes- té, Ta di- vi- ne splen- deur. \"",
+                    "notas_codes": [
+                        "Sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "c",
+                        "c",
+                        "m",
+                        "rl"
+                    ]
+                }
+            ]
+        },
+        {
+            "numero": 3,
+            "tipo": "Estrofe",
+            "linhas": [
+                {
+                    "texto_silabado": "De sain- tes ro- bes, l'é- gli- se se pa- re, ''",
+                    "notas_codes": [
+                        "Sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "sm",
+                        "rc"
+                    ]
+                },
+                {
+                    "texto_silabado": "Si dé- si- reu- se de Te ren- con- trer; ''",
+                    "notas_codes": [
+                        "Sm",
+                        "c",
+                        "c",
+                        "Sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "c",
+                        "c",
+                        "m",
+                        "rc"
+                    ]
+                },
+                {
+                    "texto_silabado": "Ain- si or- née pa- tiem- ment se pré- pa- re, ''",
+                    "notas_codes": [
+                        "Sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "sm",
+                        "rc"
+                    ]
+                },
+                {
+                    "texto_silabado": "Ta sain- te fa- ce‿el- le‿i- ra con- tem- pler. \"",
+                    "notas_codes": [
+                        "Sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "c",
+                        "c",
+                        "m",
+                        "rl"
+                    ]
+                }
+            ]
+        }
+    ]
+}

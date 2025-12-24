@@ -1,0 +1,1153 @@
+{
+    "titulo": "Hino",
+    "BPM": 60,
+    "compasso": "4/4",
+    "estrofes": [
+        {
+            "numero": 1,
+            "tipo": "Estrofe",
+            "linhas": [
+                {
+                    "silabas": [
+                        {
+                            "texto": "",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "MINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "RESPIRACAO CURTA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "MINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "RESPIRACAO LONGA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "MINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "RESPIRACAO LONGA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "COLCHEIA PONTUADA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "SEMICOLCHEIA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "MINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "RESPIRACAO LONGA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "FERMATA COLCHEIA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "SEMINIMA PONTUADA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "SEMICOLCHEIA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "MINIMA"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "numero": 1,
+            "tipo": "Estrofe",
+            "linhas": [
+                {
+                    "silabas": [
+                        {
+                            "texto": "Christ,",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "mon",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "bon",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "Maî-",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "tre",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "et",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "mon",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "Sei-",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "gneur,",
+                            "nota": "MINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "RESPIRACAO CURTA"
+                        },
+                        {
+                            "texto": "Je",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "me",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "pros-",
+                            "nota": "COLCHEIA"
+                        }
+                    ]
+                },
+                {
+                    "silabas": [
+                        {
+                            "texto": "ter-",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "ne‿a-",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "vec",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "foi",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "et",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "fer-",
+                            "nota": "MINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "RESPIRACAO LONGA"
+                        },
+                        {
+                            "texto": "veur",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "Et",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "je",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "t'im-",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "plo-",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "re,",
+                            "nota": "SEMINIMA"
+                        }
+                    ]
+                },
+                {
+                    "silabas": [
+                        {
+                            "texto": "gar-",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "de",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "mon",
+                            "nota": "MINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "RESPIRACAO LONGA"
+                        },
+                        {
+                            "texto": "cœur,",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "Par",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "Ton",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "onc-",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "tion,",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "don-",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "ne-",
+                            "nota": "SEMINIMA"
+                        }
+                    ]
+                },
+                {
+                    "silabas": [
+                        {
+                            "texto": "lui",
+                            "nota": "COLCHEIA PONTUADA"
+                        },
+                        {
+                            "texto": "la",
+                            "nota": "SEMICOLCHEIA"
+                        },
+                        {
+                            "texto": "vi-",
+                            "nota": "MINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "RESPIRACAO LONGA"
+                        },
+                        {
+                            "texto": "gueur;",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "Viens",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "le",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "dé-",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "FERMATA COLCHEIA"
+                        },
+                        {
+                            "texto": "fen-",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "dre,",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "ô",
+                            "nota": "SEMINIMA PONTUADA"
+                        },
+                        {
+                            "texto": "mon",
+                            "nota": "SEMICOLCHEIA"
+                        },
+                        {
+                            "texto": "Pro-",
+                            "nota": "MINIMA"
+                        },
+                        {
+                            "texto": "tec-",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "teur.",
+                            "nota": "SEMINIMA"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "numero": 2,
+            "tipo": "Estrofe",
+            "linhas": [
+                {
+                    "silabas": [
+                        {
+                            "texto": "Du",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "fond",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "de",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "l'â-",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "me",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "je",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "sens,",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "Sei-",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "gneur,",
+                            "nota": "MINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "RESPIRACAO CURTA"
+                        },
+                        {
+                            "texto": "Que",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "de",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "Toi",
+                            "nota": "COLCHEIA"
+                        }
+                    ]
+                },
+                {
+                    "silabas": [
+                        {
+                            "texto": "seul,",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "dé-",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "pen-",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "dant",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "est",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "mon",
+                            "nota": "MINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "RESPIRACAO LONGA"
+                        },
+                        {
+                            "texto": "cœur;",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "Ac-",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "cor-",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "de-",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "lui,",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "par",
+                            "nota": "SEMINIMA"
+                        }
+                    ]
+                },
+                {
+                    "silabas": [
+                        {
+                            "texto": "gran-",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "de",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "fa-",
+                            "nota": "MINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "RESPIRACAO LONGA"
+                        },
+                        {
+                            "texto": "veur,",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "Sûr",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "fon-",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "de-",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "ment,",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "la",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "ver-",
+                            "nota": "SEMINIMA"
+                        }
+                    ]
+                },
+                {
+                    "silabas": [
+                        {
+                            "texto": "tu,",
+                            "nota": "COLCHEIA PONTUADA"
+                        },
+                        {
+                            "texto": "la",
+                            "nota": "SEMICOLCHEIA"
+                        },
+                        {
+                            "texto": "va-",
+                            "nota": "MINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "RESPIRACAO LONGA"
+                        },
+                        {
+                            "texto": "leur;",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "Don-",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "ne-",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "lui",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "FERMATA COLCHEIA"
+                        },
+                        {
+                            "texto": "for-",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "ce,",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "ô",
+                            "nota": "SEMINIMA PONTUADA"
+                        },
+                        {
+                            "texto": "mon",
+                            "nota": "SEMICOLCHEIA"
+                        },
+                        {
+                            "texto": "Dé-",
+                            "nota": "MINIMA"
+                        },
+                        {
+                            "texto": "fen-",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "seur.",
+                            "nota": "SEMINIMA"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "numero": 3,
+            "tipo": "Estrofe",
+            "linhas": [
+                {
+                    "silabas": [
+                        {
+                            "texto": "Som-",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "bre‿et",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "pro-",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "fon-",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "de",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "est",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "la",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "val-",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "lée",
+                            "nota": "MINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "RESPIRACAO CURTA"
+                        },
+                        {
+                            "texto": "Où",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "nous",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "vi-",
+                            "nota": "COLCHEIA"
+                        }
+                    ]
+                },
+                {
+                    "silabas": [
+                        {
+                            "texto": "vons,",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "de",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "tout",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "mal,",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "en-",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "tou-",
+                            "nota": "MINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "RESPIRACAO LONGA"
+                        },
+                        {
+                            "texto": "rés;",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "Rien",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "que",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "Ta",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "for-",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "ce",
+                            "nota": "SEMINIMA"
+                        }
+                    ]
+                },
+                {
+                    "silabas": [
+                        {
+                            "texto": "peut",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "con-",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "ser-",
+                            "nota": "MINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "RESPIRACAO LONGA"
+                        },
+                        {
+                            "texto": "ver",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "moi",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "la",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "grâ-",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "ce",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "et",
+                            "nota": "COLCHEIA"
+                        }
+                    ]
+                },
+                {
+                    "silabas": [
+                        {
+                            "texto": "la",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "pu-",
+                            "nota": "COLCHEIA PONTUADA"
+                        },
+                        {
+                            "texto": "re-",
+                            "nota": "SEMICOLCHEIA"
+                        },
+                        {
+                            "texto": "té,",
+                            "nota": "MINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "RESPIRACAO LONGA"
+                        },
+                        {
+                            "texto": "Dans",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "Ton",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "re-",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "fu-",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "FERMATA COLCHEIA"
+                        },
+                        {
+                            "texto": "ge",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "tou-",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "jours",
+                            "nota": "SEMINIMA PONTUADA"
+                        },
+                        {
+                            "texto": "me",
+                            "nota": "SEMICOLCHEIA"
+                        },
+                        {
+                            "texto": "gar-",
+                            "nota": "MINIMA"
+                        },
+                        {
+                            "texto": "der.",
+                            "nota": "SEMINIMA"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "numero": 4,
+            "tipo": "Estrofe",
+            "linhas": [
+                {
+                    "silabas": [
+                        {
+                            "texto": "Par",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "Ta",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "main",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "sain-",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "te,",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "dans",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "Ta",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "bon-",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "té,",
+                            "nota": "MINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "RESPIRACAO CURTA"
+                        },
+                        {
+                            "texto": "Ô",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "viens",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "par-",
+                            "nota": "COLCHEIA"
+                        }
+                    ]
+                },
+                {
+                    "silabas": [
+                        {
+                            "texto": "fai-",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "re",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "mon",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "cœur,",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "Maî-",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "tre‿ai-",
+                            "nota": "MINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "RESPIRACAO LONGA"
+                        },
+                        {
+                            "texto": "mé;",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "Que",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "je",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "Te",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "ser-",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "ve",
+                            "nota": "SEMINIMA"
+                        }
+                    ]
+                },
+                {
+                    "silabas": [
+                        {
+                            "texto": "en",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "sain-",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "te-",
+                            "nota": "MINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "RESPIRACAO LONGA"
+                        },
+                        {
+                            "texto": "té",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "Pour",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "ar-",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "ri-",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "ver",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "au",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "cé-",
+                            "nota": "SEMINIMA"
+                        }
+                    ]
+                },
+                {
+                    "silabas": [
+                        {
+                            "texto": "les-",
+                            "nota": "COLCHEIA PONTUADA"
+                        },
+                        {
+                            "texto": "te",
+                            "nota": "SEMICOLCHEIA"
+                        },
+                        {
+                            "texto": "foy-",
+                            "nota": "MINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "RESPIRACAO LONGA"
+                        },
+                        {
+                            "texto": "er;",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "Maî-",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "tre",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "su-",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "",
+                            "nota": "FERMATA COLCHEIA"
+                        },
+                        {
+                            "texto": "bli-",
+                            "nota": "COLCHEIA"
+                        },
+                        {
+                            "texto": "me,",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "je",
+                            "nota": "SEMINIMA PONTUADA"
+                        },
+                        {
+                            "texto": "veux",
+                            "nota": "SEMICOLCHEIA"
+                        },
+                        {
+                            "texto": "t'é-",
+                            "nota": "MINIMA"
+                        },
+                        {
+                            "texto": "cou-",
+                            "nota": "SEMINIMA"
+                        },
+                        {
+                            "texto": "ter.",
+                            "nota": "SEMINIMA"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

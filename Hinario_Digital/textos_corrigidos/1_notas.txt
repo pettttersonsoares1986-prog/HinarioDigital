@@ -1,0 +1,10 @@
+Sm,c,c,sm,sm,sm,c,c,m,rc
+
+Sm,c,c,Sm,c,c,sm,c,c,m,rl
+
+Sm,c,c,sm,sm,sm,c,c,m,rc
+
+Sm,c,c,sm,c,c,sm,cp,sc,m
+
+m,c,c,m,c_fermata,rl,c,sm,cp,sc,m
+

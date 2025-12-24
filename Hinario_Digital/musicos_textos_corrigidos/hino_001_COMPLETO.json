@@ -1,0 +1,323 @@
+{
+    "titulo": "1. CHRIST, MON BON MAÎTRE",
+    "BPM": 61,
+    "unidade_metrica": "semínima",
+    "estrofes": [
+        {
+            "numero": 1,
+            "tipo": "Estrofe",
+            "linhas": [
+                {
+                    "texto_silabado": "Christ, mon bon Maî- tre et mon Sei- gneur,",
+                    "notas_codes": [
+                        "Sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "sm",
+                        "sm",
+                        "c",
+                        "c",
+                        "m"
+                    ]
+                },
+                {
+                    "texto_silabado": "Je me pros- ter- ne_a- vec foi et fer- veur,",
+                    "notas_codes": [
+                        "Sm",
+                        "c",
+                        "c",
+                        "Sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "c",
+                        "c",
+                        "m"
+                    ]
+                },
+                {
+                    "texto_silabado": "Et je T'im- plo- re, gar- de mon cœur,",
+                    "notas_codes": [
+                        "Sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "sm",
+                        "sm",
+                        "c",
+                        "c",
+                        "m"
+                    ]
+                },
+                {
+                    "texto_silabado": "Par Ton onc- tion, don- ne- lui la vi- gueur;",
+                    "notas_codes": [
+                        "Sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "cp",
+                        "sc",
+                        "m"
+                    ]
+                },
+                {
+                    "texto_silabado": "Viens le dé- fen- dre, à mon Pro- tec- teur.",
+                    "notas_codes": [
+                        "m",
+                        "c",
+                        "c",
+                        "m",
+                        "c_fermata",
+                        "c",
+                        "sm",
+                        "cp",
+                        "sc",
+                        "m"
+                    ]
+                }
+            ]
+        },
+        {
+            "numero": 2,
+            "tipo": "Estrofe",
+            "linhas": [
+                {
+                    "texto_silabado": "Du fond de l'â- me je sens, Sei- gneur,",
+                    "notas_codes": [
+                        "Sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "sm",
+                        "sm",
+                        "c",
+                        "c",
+                        "m"
+                    ]
+                },
+                {
+                    "texto_silabado": "Que de Toi seul, dé- pen- dant est mon cœur;",
+                    "notas_codes": [
+                        "Sm",
+                        "c",
+                        "c",
+                        "Sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "c",
+                        "c",
+                        "m"
+                    ]
+                },
+                {
+                    "texto_silabado": "Ac- cor- de- lui, par gran- de fa- veur,",
+                    "notas_codes": [
+                        "Sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "sm",
+                        "sm",
+                        "c",
+                        "c",
+                        "m"
+                    ]
+                },
+                {
+                    "texto_silabado": "Sûr fon- de- ment, la ver- tu, la va- leur;",
+                    "notas_codes": [
+                        "Sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "cp",
+                        "sc",
+                        "m"
+                    ]
+                },
+                {
+                    "texto_silabado": "Don- ne- lui for- ce, ô mon Dé- fen- seur.",
+                    "notas_codes": [
+                        "m",
+                        "c",
+                        "c",
+                        "m",
+                        "c_fermata",
+                        "c",
+                        "sm",
+                        "cp",
+                        "sc",
+                        "m"
+                    ]
+                }
+            ]
+        },
+        {
+            "numero": 3,
+            "tipo": "Estrofe",
+            "linhas": [
+                {
+                    "texto_silabado": "Som- bre_et pro- fon- de est la val- lée\",",
+                    "notas_codes": [
+                        "Sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "sm",
+                        "sm",
+                        "c",
+                        "c",
+                        "m"
+                    ]
+                },
+                {
+                    "texto_silabado": "Où nous vi- vons, de tout mal, en- tou- rés;",
+                    "notas_codes": [
+                        "Sm",
+                        "c",
+                        "c",
+                        "Sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "c",
+                        "c",
+                        "m"
+                    ]
+                },
+                {
+                    "texto_silabado": "Rien que Ta for- ce peut con- ser- ver",
+                    "notas_codes": [
+                        "Sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "sm",
+                        "sm",
+                        "c",
+                        "c",
+                        "m"
+                    ]
+                },
+                {
+                    "texto_silabado": "En moi la grâ- ce et la pu- re- té,",
+                    "notas_codes": [
+                        "Sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "cp",
+                        "sc",
+                        "m"
+                    ]
+                },
+                {
+                    "texto_silabado": "Dans Ton re- fu- ge tou- jours me gar- der.",
+                    "notas_codes": [
+                        "m",
+                        "c",
+                        "c",
+                        "m",
+                        "c_fermata",
+                        "c",
+                        "sm",
+                        "cp",
+                        "sc",
+                        "m"
+                    ]
+                }
+            ]
+        },
+        {
+            "numero": 4,
+            "tipo": "Estrofe",
+            "linhas": [
+                {
+                    "texto_silabado": "Par Ta main sai- nte, dans Ta bon- té,",
+                    "notas_codes": [
+                        "Sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "sm",
+                        "sm",
+                        "c",
+                        "c",
+                        "m"
+                    ]
+                },
+                {
+                    "texto_silabado": "Ô viens par- fai- re mon cœur, Maî- tre_ai- mé;",
+                    "notas_codes": [
+                        "Sm",
+                        "c",
+                        "c",
+                        "Sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "c",
+                        "c",
+                        "m"
+                    ]
+                },
+                {
+                    "texto_silabado": "Que je Te ser- ve en sain- te- té",
+                    "notas_codes": [
+                        "Sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "sm",
+                        "sm",
+                        "c",
+                        "c",
+                        "m"
+                    ]
+                },
+                {
+                    "texto_silabado": "Pour ar- ri- ver au cé- les- te foy- er;",
+                    "notas_codes": [
+                        "Sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "c",
+                        "c",
+                        "sm",
+                        "cp",
+                        "sc",
+                        "m"
+                    ]
+                },
+                {
+                    "texto_silabado": "Maî- tre su- bli- me, je veux T'é- cou- ter.",
+                    "notas_codes": [
+                        "m",
+                        "c",
+                        "c",
+                        "m",
+                        "c_fermata",
+                        "c",
+                        "sm",
+                        "cp",
+                        "sc",
+                        "m"
+                    ]
+                }
+            ]
+        }
+    ]
+}
