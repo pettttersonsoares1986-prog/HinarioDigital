@@ -1,16 +1,22 @@
 import os
 import google.generativeai as genai
 from PIL import Image
-
+from dotenv import load_dotenv
 
 from pathlib import Path
 
 # Pega a pasta onde ESTE arquivo .py está salvo
 BASE_DIR = Path(__file__).parent.resolve()
 
+# Carrega as variáveis do arquivo .env
+load_dotenv()
 
-# --- CONFIGURAÇÕES ---
-MINHA_API_KEY = "AIzaSyBZqVgrhplbTXDSAcNb4ammpjrBKecqgM0"
+# Pega a chave de forma segura
+MINHA_API_KEY = os.getenv("GEMINI_API_KEY")
+
+if not MINHA_API_KEY:
+    raise ValueError("ERRO: A chave API não foi encontrada no arquivo .env")
+
 
 # Caminho da imagem 
 CAMINHO_IMAGEM = BASE_DIR / "imagens" / "1.png"
