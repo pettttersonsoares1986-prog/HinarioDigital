@@ -22,13 +22,16 @@ from pathlib import Path
 BASE_DIR = Path(__file__).parent.resolve()
 
 # ====================== CONFIGURAÇÃO DE DIRETÓRIOS ======================
-IMG_FOLDER = BASE_DIR / "imagens"
+IMG_FOLDER = BASE_DIR / "imagens_dev"
 JSON_FOLDER = BASE_DIR / "json_notas"
 ICONS_FOLDER = BASE_DIR / "Notas_Musicais"
 
-print(ICONS_FOLDER)
-
+# Garante que as pastas existam
+os.makedirs(IMG_FOLDER, exist_ok=True)
 os.makedirs(JSON_FOLDER, exist_ok=True)
+os.makedirs(ICONS_FOLDER, exist_ok=True)
+
+print(f"Diretório de Ícones: {ICONS_FOLDER}")
 
 # ====================== CONSTANTES GLOBAIS ======================
 GLOBAL_CONFIG = {
@@ -77,7 +80,7 @@ class SettingsDialog(QDialog):
         self.spin_zoom.setRange(0.5, 5.0)
         self.spin_zoom.setSingleStep(0.1)
         self.spin_zoom.setValue(GLOBAL_CONFIG["CROP_ZOOM"])
-        self.layout.addRow(QLabel("Zoom do Texto (Multiplicador):"), self.spin_zoom)
+        self.layout.addRow(QLabel("Zoom do Texto/Cabeçalho (Multiplicador):"), self.spin_zoom)
         
         line = QFrame(); line.setFrameShape(QFrame.Shape.HLine); self.layout.addRow(line)
 
@@ -183,7 +186,7 @@ class HeaderBoxItem(QGraphicsRectItem):
             return QPointF(x, y)
         return super().itemChange(change, value)
 
-# ====================== ITEM: CAIXA DO COMPASSO (NOVO) ======================
+# ====================== ITEM: CAIXA DO COMPASSO ======================
 class TimeSigBoxItem(QGraphicsRectItem):
     def __init__(self, rect):
         super().__init__(rect)
@@ -590,7 +593,7 @@ class MainWindow(QMainWindow):
         self.history_pos = -1
         self.images_status = {} 
         self.is_drawing_header = False
-        self.is_drawing_timesig = False # Novo estado para compasso
+        self.is_drawing_timesig = False 
         
         self.init_ui()
         self.scene = QGraphicsScene()
@@ -752,7 +755,7 @@ class MainWindow(QMainWindow):
             self.save_state()  
 
     def select_images(self):
-        fnames, _ = QFileDialog.getOpenFileNames(self, "Selecionar Imagens", IMG_FOLDER, "Images (*.png *.jpg *.jpeg)")
+        fnames, _ = QFileDialog.getOpenFileNames(self, "Selecionar Imagens", str(IMG_FOLDER), "Images (*.png *.jpg *.jpeg)")
         if fnames:
             fnames.sort()
             self.current_json_path = None
@@ -793,19 +796,20 @@ class MainWindow(QMainWindow):
             item = NoteItem(self.current_tool, x, y, self.snap_active.isChecked)
         self.scene.addItem(item)
 
-    # ================= GERADOR =================
+    # ================= GERADOR (MODIFICADO COM MELHORIAS DE ZOOM) =================
     def export_clean_sheet_with_crops(self):
         state = self.get_current_state()
         if not state:
             QMessageBox.warning(self, "Aviso", "Nada para exportar.")
             return
 
+        # Carrega configurações
         PAGE_W = GLOBAL_CONFIG["PAGE_WIDTH"]
         SPACING = GLOBAL_CONFIG["SPACING_NOTE"]
         CROP_W = GLOBAL_CONFIG["CROP_WIDTH"]
         CROP_H = GLOBAL_CONFIG["CROP_HEIGHT"]
         CROP_OFF_Y = GLOBAL_CONFIG["CROP_OFFSET_Y"]
-        CROP_ZOOM = GLOBAL_CONFIG["CROP_ZOOM"]
+        CROP_ZOOM = GLOBAL_CONFIG["CROP_ZOOM"] # Fator de Zoom
         MARGIN_R = GLOBAL_CONFIG["RIGHT_MARGIN"]
         PAD_B = GLOBAL_CONFIG["BOTTOM_PADDING"]
         
@@ -825,10 +829,13 @@ class MainWindow(QMainWindow):
         img_out = Image.new('RGB', (W, H), color='white')
         draw = ImageDraw.Draw(img_out)
 
+        # Fontes
         try:
             font_note_name = ImageFont.truetype("arial.ttf", 18)
+            font_tag = ImageFont.truetype("arial.ttf", 22) 
         except:
             font_note_name = ImageFont.load_default()
+            font_tag = ImageFont.load_default()
 
         source_images = []
         try:
@@ -839,7 +846,9 @@ class MainWindow(QMainWindow):
             QMessageBox.critical(self, "Erro", f"Erro ao abrir imagens originais: {e}")
             return
 
-        # 1. CORTA E COLA O CABEÇALHO
+        # ---------------------------------------------------------
+        # 1. CORTA E COLA O CABEÇALHO (COM ZOOM E CONTRASTE)
+        # ---------------------------------------------------------
         header_height_pasted = 0
         if source_images and header_rect_coords:
             first_img = source_images[0]
@@ -849,9 +858,20 @@ class MainWindow(QMainWindow):
             
             if hy2 > hy1 and hx2 > hx1:
                 header_crop = first_img.crop((hx1, hy1, hx2, hy2))
-                paste_x = int((W - header_crop.width) // 2)
+                
+                # Aplica Zoom
+                new_hw = int(header_crop.width * CROP_ZOOM)
+                new_hh = int(header_crop.height * CROP_ZOOM)
+                header_crop = header_crop.resize((new_hw, new_hh), Image.Resampling.LANCZOS)
+                
+                # Melhora qualidade para evitar borrões
+                enhancer = ImageEnhance.Contrast(header_crop)
+                header_crop = enhancer.enhance(2.0) # Aumenta contraste drasticamente
+                header_crop = ImageOps.grayscale(header_crop).convert("RGB") # Remove ruído de cor
+                
+                paste_x = int((W - new_hw) // 2)
                 img_out.paste(header_crop, (paste_x, 0))
-                header_height_pasted = (hy2 - hy1)
+                header_height_pasted = new_hh 
 
         start_y_offset = header_height_pasted + 100
         cursor_x = 100
@@ -859,14 +879,16 @@ class MainWindow(QMainWindow):
         row_height = 450 
         current_y_ref = state[0]['y'] if state else 0
 
-        def draw_staff(draw_obj, center_y, width):
-            pass 
+        # Função auxiliar para desenhar linha
+        def draw_staff_debug(draw_obj, center_y, width):
+            pass
 
-        draw_staff(draw, cursor_y_staff_center, W)
+        draw_staff_debug(draw, cursor_y_staff_center, W)
         
-        # 2. CORTA E COLA O COMPASSO (Antes das notas)
+        # ---------------------------------------------------------
+        # 2. CORTA E COLA O COMPASSO (COM ZOOM E CONTRASTE)
+        # ---------------------------------------------------------
         if source_images and timesig_rect_coords:
-            # Assume que está na primeira imagem também
             first_img = source_images[0]
             tx1, ty1, tx2, ty2 = timesig_rect_coords
             
@@ -876,111 +898,161 @@ class MainWindow(QMainWindow):
             if tx2 > tx1 and ty2 > ty1:
                 ts_crop = first_img.crop((tx1, ty1, tx2, ty2))
                 
-                # Aplica Zoom também no compasso para ficar legível
+                # Aplica Zoom
                 new_w = int(ts_crop.width * CROP_ZOOM)
                 new_h = int(ts_crop.height * CROP_ZOOM)
                 ts_crop = ts_crop.resize((new_w, new_h), Image.Resampling.LANCZOS)
                 
-                # Cola no início da linha
+                # Melhora qualidade
+                enhancer = ImageEnhance.Contrast(ts_crop)
+                ts_crop = enhancer.enhance(2.0)
+                ts_crop = ImageOps.grayscale(ts_crop).convert("RGB")
+
                 dest_y_ts = int(cursor_y_staff_center - (new_h // 2))
                 img_out.paste(ts_crop, (cursor_x, dest_y_ts))
                 
-                # Avança cursor para não sobrepor a primeira nota
                 cursor_x += new_w + 50
 
-        # 3. EXPORTA NOTAS
+        # 3. EXPORTA NOTAS E TAGS
         for item in state:
             tipo = item['tipo']
             if "HEADER" in tipo or "TIMESIG" in tipo: continue
 
             item_y = item['y']
             
+            # Quebra de linha se a posição Y mudar muito
             if item_y > current_y_ref + 150: 
                 cursor_y_staff_center += row_height
                 cursor_x = 100
                 current_y_ref = item_y
-                draw_staff(draw, cursor_y_staff_center, W)
+                draw_staff_debug(draw, cursor_y_staff_center, W)
             
-            if "TAG" not in tipo:
+            # --- LÓGICA PARA DESENHAR TAGS VISÍVEIS ---
+            if "TAG" in tipo:
+                tag_text = tipo.replace("TAG_", "")
+                
+                # Define cores baseadas no tipo de tag (Similar ao CSS visual)
+                bg_color = "#3498db" # Azul padrão
+                if "CORO" in tag_text: bg_color = "#e67e22" # Laranja
+                elif "FINAL" in tag_text: bg_color = "#27ae60" # Verde
+                elif "VERSO" in tag_text: bg_color = "#2980b9" # Azul
+
+                # Dimensões da caixa da tag na imagem final
+                tag_w, tag_h = 100, 40
+                tag_x1 = cursor_x
+                tag_y1 = cursor_y_staff_center - 20
+                tag_x2 = tag_x1 + tag_w
+                tag_y2 = tag_y1 + tag_h
+
+                # Desenha retângulo colorido
+                draw.rectangle([tag_x1, tag_y1, tag_x2, tag_y2], fill=bg_color, outline=None)
+                
+                # Desenha o texto centralizado na caixa
+                bbox = draw.textbbox((0, 0), tag_text, font=font_tag)
+                text_w = bbox[2] - bbox[0]
+                text_h = bbox[3] - bbox[1]
+                
+                text_x = tag_x1 + (tag_w - text_w) / 2
+                text_y = tag_y1 + (tag_h - text_h) / 2 - 2 
+                
+                draw.text((text_x, text_y), tag_text, fill="white", font=font_tag)
+
+                # Avança cursor
+                espaco = GLOBAL_CONFIG["SPACING_TAG"]
+                cursor_x += espaco
+
+            # --- LÓGICA PARA DESENHAR NOTAS (SEM ÍCONES AGORA) ---
+            else:
+                # Desenha nome da nota (Ex: Seminima) acima
                 display_name = tipo.replace("_", " ").title()
                 try:
+                    # Texto da nota (Seminima, etc)
                     draw.text((cursor_x, cursor_y_staff_center - 70), display_name, fill="black", font=font_note_name, anchor="mb")
                 except ValueError:
                     draw.text((cursor_x - 30, cursor_y_staff_center - 90), display_name, fill="black", font=font_note_name)
 
-            icon_path = os.path.join(ICONS_FOLDER, f"{tipo.replace(' ', '_')}.png")
-            if os.path.exists(icon_path):
-                note_img = Image.open(icon_path).convert("RGBA")
-                note_img.thumbnail((80, 80), Image.Resampling.LANCZOS)
-                
-                offset_x = int(cursor_x - (note_img.width // 2))
-                offset_y = int(cursor_y_staff_center - (note_img.height // 2))
-                
-                img_out.paste(note_img, (offset_x, offset_y), note_img)
-            else:
-                draw.rectangle([cursor_x-20, cursor_y_staff_center-20, cursor_x+20, cursor_y_staff_center+20], outline="black", width=3)
+                # REMOVIDO: Código que colava o ícone da nota musical
+                # if os.path.exists(icon_path): ... (desativado para limpar a imagem)
 
-            if not any(x in tipo for x in ["PAUSA", "RESPIRACAO", "TAG"]):
-                
-                local_w = item.get('custom_w', CROP_W)
-                local_h = item.get('custom_h', CROP_H)
-                local_y = item.get('custom_y', CROP_OFF_Y)
-
-                accumulated_y = 0
-                source_img_to_use = None
-                relative_y = 0
-                for src_img in source_images:
-                    h = src_img.height
-                    if accumulated_y <= item_y < (accumulated_y + h + 20):
-                        source_img_to_use = src_img
-                        relative_y = item_y - accumulated_y
-                        break
-                    accumulated_y += h + 20 
-                if source_img_to_use:
-                    crop_x1 = int(item['x'] - local_w // 2)
-                    crop_y1 = int(relative_y + local_y)
-                    crop_x2 = int(item['x'] + local_w // 2)
-                    crop_y2 = int(relative_y + local_y + local_h)
+                # --- LÓGICA DE RECORTE DA SÍLABA (CROP) ---
+                if not any(x in tipo for x in ["PAUSA", "RESPIRACAO"]):
                     
-                    crop_x1 = max(0, crop_x1)
-                    crop_y1 = max(0, crop_y1)
-                    crop_x2 = min(source_img_to_use.width, crop_x2)
-                    crop_y2 = min(source_img_to_use.height, crop_y2)
-                    
-                    if crop_x2 > crop_x1 and crop_y2 > crop_y1:
-                        cropped_text = source_img_to_use.crop((crop_x1, crop_y1, crop_x2, crop_y2))
-                        
-                        new_text_w = int(cropped_text.width * CROP_ZOOM)
-                        new_text_h = int(cropped_text.height * CROP_ZOOM)
-                        cropped_text = cropped_text.resize((new_text_w, new_text_h), Image.Resampling.LANCZOS)
-                        
-                        enhancer = ImageEnhance.Contrast(cropped_text)
-                        cropped_text = enhancer.enhance(1.5)
-                        
-                        dest_x = int(cursor_x - (new_text_w // 2))
-                        dest_y = int(cursor_y_staff_center + 65)
-                        img_out.paste(cropped_text, (dest_x, dest_y))
+                    local_w = item.get('custom_w', CROP_W)
+                    local_h = item.get('custom_h', CROP_H)
+                    local_y = item.get('custom_y', CROP_OFF_Y)
 
-            espaco = GLOBAL_CONFIG["SPACING_TAG"] if "TAG" in tipo else SPACING
-            cursor_x += espaco
+                    accumulated_y = 0
+                    source_img_to_use = None
+                    relative_y = 0
+                    for src_img in source_images:
+                        h = src_img.height
+                        if accumulated_y <= item_y < (accumulated_y + h + 20):
+                            source_img_to_use = src_img
+                            relative_y = item_y - accumulated_y
+                            break
+                        accumulated_y += h + 20 
+                    
+                    if source_img_to_use:
+                        crop_x1 = int(item['x'] - local_w // 2)
+                        crop_y1 = int(relative_y + local_y)
+                        crop_x2 = int(item['x'] + local_w // 2)
+                        crop_y2 = int(relative_y + local_y + local_h)
+                        
+                        crop_x1 = max(0, crop_x1)
+                        crop_y1 = max(0, crop_y1)
+                        crop_x2 = min(source_img_to_use.width, crop_x2)
+                        crop_y2 = min(source_img_to_use.height, crop_y2)
+                        
+                        if crop_x2 > crop_x1 and crop_y2 > crop_y1:
+                            cropped_text = source_img_to_use.crop((crop_x1, crop_y1, crop_x2, crop_y2))
+                            
+                            # Zoom na sílaba
+                            new_text_w = int(cropped_text.width * CROP_ZOOM)
+                            new_text_h = int(cropped_text.height * CROP_ZOOM)
+                            cropped_text = cropped_text.resize((new_text_w, new_text_h), Image.Resampling.LANCZOS)
+                            
+                            enhancer = ImageEnhance.Contrast(cropped_text)
+                            cropped_text = enhancer.enhance(1.5)
+                            
+                            dest_x = int(cursor_x - (new_text_w // 2))
+                            dest_y = int(cursor_y_staff_center + 65)
+                            img_out.paste(cropped_text, (dest_x, dest_y))
+
+                # Avança cursor da nota
+                cursor_x += SPACING
+
+            # Verifica se precisa quebrar linha horizontalmente
             if cursor_x > W - MARGIN_R:
                 cursor_x = 100
                 cursor_y_staff_center += row_height
-                draw_staff(draw, cursor_y_staff_center, W)
+                draw_staff_debug(draw, cursor_y_staff_center, W)
 
+        # Corta espaços em branco no final da imagem gerada
         img_inverted = ImageOps.invert(img_out.convert('RGB'))
         bbox = img_inverted.getbbox()
         if bbox:
             crop_h = min(H, bbox[3] + PAD_B)
             img_out = img_out.crop((0, 0, W, crop_h))
             
-        save_path = os.path.join(IMG_FOLDER, "export_recorte_gemini.jpg")
+        # NOME DO ARQUIVO DINÂMICO
+        if self.current_json_path:
+            # Usa o nome do JSON atual
+            base_name = os.path.splitext(os.path.basename(self.current_json_path))[0]
+        elif self.current_image_paths:
+            # Fallback para o nome da primeira imagem
+            base_name = os.path.splitext(os.path.basename(self.current_image_paths[0]))[0]
+        else:
+            base_name = "export_recorte_gemini"
+
+        save_filename = f"{base_name}.jpg"
+        save_path = os.path.join(IMG_FOLDER, save_filename)
+        
         img_out.convert("RGB").save(save_path, quality=95)
         try:
             os.startfile(save_path)
         except:
             pass
-        QMessageBox.information(self, "Sucesso", f"Imagem gerada:\n{save_path}")
+        QMessageBox.information(self, "Sucesso", f"Imagem gerada com sucesso!\n{save_path}")
 
     # ================= ESTADO / SALVAMENTO =================
     def get_current_state(self):
