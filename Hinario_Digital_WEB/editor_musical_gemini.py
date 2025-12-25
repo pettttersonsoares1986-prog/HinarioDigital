@@ -8,7 +8,9 @@ from functools import partial
 import io
 import threading
 
-# Importações da Interface Gráfica (PyQt6)
+# ============================================================================
+#                       IMPORTAÇÕES DA INTERFACE GRÁFICA
+# ============================================================================
 from PyQt6.QtWidgets import (
     QApplication, QMainWindow, QGraphicsView, QGraphicsScene, 
     QGraphicsItem, QGraphicsPixmapItem, QGraphicsRectItem, QWidget, QVBoxLayout, 
@@ -770,7 +772,7 @@ class PreviewDialog(QDialog):
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Editor Musical Pro V31 - Final")
+        self.setWindowTitle("Editor Musical Pro V32 - Final Expandido")
         self.resize(1600, 1000)
         self.current_tool = "SEMINIMA"
         self.current_image_paths = []
@@ -857,6 +859,12 @@ class MainWindow(QMainWindow):
         self.list_projects.itemDoubleClicked.connect(self.on_project_double_click) 
         layout_projects.addWidget(self.list_projects)
         
+        # Botão Excluir Projeto
+        btn_del_proj = QPushButton("🗑️ Excluir Projeto")
+        btn_del_proj.clicked.connect(self.delete_current_project)
+        btn_del_proj.setStyleSheet("background-color: #c0392b; color: white; padding: 5px;")
+        layout_projects.addWidget(btn_del_proj)
+        
         splitter_vertical.addWidget(widget_images)
         splitter_vertical.addWidget(widget_projects)
         layout.addWidget(splitter_vertical)
@@ -877,11 +885,13 @@ class MainWindow(QMainWindow):
         
         toolbar_layout.addSpacing(20)
         
-        # --- FUNÇÕES DE DESENHO (CORRIGIDAS) ---
+        # --- FUNÇÕES DE DESENHO (AGORA ESTÃO AQUI GARANTIDAS) ---
         self.add_btn(toolbar_layout, "Desenhar Cabeçalho", self.enable_header_drawing, "#3498db")
         self.add_btn(toolbar_layout, "Desenhar Compasso", self.enable_timesig_drawing, "#e67e22")
         
         toolbar_layout.addSpacing(20)
+        
+        # --- FUNÇÃO DE PREVIEW (AGORA AQUI TAMBÉM) ---
         self.add_btn(toolbar_layout, "👁️ PREVIEW", self.generate_preview, "#8e44ad")
 
         toolbar_layout.addSpacing(20)
@@ -1084,8 +1094,6 @@ class MainWindow(QMainWindow):
                         if single: imgs.append(os.path.basename(single))
                         
                         for img_name in imgs:
-                            # Se já estiver marcado como concluído por outro projeto, mantém.
-                            # Caso contrário, atualiza com o status deste projeto.
                             if status_map.get(img_name) != 'concluido':
                                 status_map[img_name] = proj_status
                 except: pass
@@ -1104,7 +1112,7 @@ class MainWindow(QMainWindow):
                     item.setBackground(QBrush(QColor("#e8f8f5")))
                     item.setText(f"✅ {f}")
                 elif status == "em_andamento":
-                    item.setForeground(QBrush(QColor("#2980b9"))) # Azul (Em uso/Andamento)
+                    item.setForeground(QBrush(QColor("#2980b9"))) # Azul
                     item.setText(f"📂 {f}")
                 
                 self.list_images.addItem(item)
@@ -1398,7 +1406,7 @@ class MainWindow(QMainWindow):
     def undo(self): 
         if self.history_pos > 0: self.history_pos-=1; self.load_scene_data(self.history[self.history_pos])
     def clear_all(self): self.scene.clear(); self.load_images_to_scene(self.current_image_paths)
-    def update_title(self): self.setWindowTitle(f"Editor V31 - {len(self.scene.items())} itens")
+    def update_title(self): self.setWindowTitle(f"Editor V32 - {len(self.scene.items())} itens")
     def delete_specific_item(self, item): self.scene.removeItem(item)
     def swap_item_type(self, item): x,y=item.x(),item.y(); self.scene.removeItem(item); self.add_item_at_mouse(QPointF(x,y))
     def open_individual_crop_dialog(self, item): d = IndividualCropDialog(item.custom_crop_params or {}, self); d.exec(); item.custom_crop_params=d.result_data; item.update()
