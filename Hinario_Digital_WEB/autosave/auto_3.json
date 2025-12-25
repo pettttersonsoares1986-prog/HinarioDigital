@@ -1,0 +1,80 @@
+{
+    "imagem_fundo": "C:\\Users\\pettt\\Projects\\HinarioDigital\\Hinario_Digital_WEB\\imagens_dev\\pagina13_img1.png",
+    "imagens_fundo": [
+        "C:\\Users\\pettt\\Projects\\HinarioDigital\\Hinario_Digital_WEB\\imagens_dev\\pagina13_img1.png"
+    ],
+    "status": "em_andamento",
+    "notas": [
+        {
+            "tipo": "COLCHEIA",
+            "x": -158.0,
+            "y": 35.0
+        },
+        {
+            "tipo": "SEMINIMA",
+            "x": 453.0,
+            "y": 315.0,
+            "custom_w": 60,
+            "custom_h": 60,
+            "custom_y": 40
+        },
+        {
+            "tipo": "COLCHEIA",
+            "x": 505.0,
+            "y": 339.0
+        },
+        {
+            "tipo": "SEMINIMA",
+            "x": 601.0,
+            "y": 340.0
+        },
+        {
+            "tipo": "COLCHEIA",
+            "x": 636.0,
+            "y": 353.0
+        },
+        {
+            "tipo": "COLCHEIA",
+            "x": 677.0,
+            "y": 332.0
+        },
+        {
+            "tipo": "SEMINIMA",
+            "x": 781.0,
+            "y": 343.0
+        },
+        {
+            "tipo": "SEMINIMA",
+            "x": 918.0,
+            "y": 339.0
+        },
+        {
+            "tipo": "SEMINIMA",
+            "x": 973.0,
+            "y": 339.0
+        },
+        {
+            "tipo": "SEMINIMA",
+            "x": 1058.0,
+            "y": 341.0
+        }
+    ],
+    "configuracoes": {
+        "CROP_OFFSET_Y": 20,
+        "CROP_WIDTH": 60,
+        "CROP_HEIGHT": 60,
+        "CHORUS_OFFSET_Y": 40,
+        "CHORUS_WIDTH": 50,
+        "CHORUS_HEIGHT": 80,
+        "CROP_ZOOM": 1.3,
+        "SPACING_NOTE": 160,
+        "SPACING_TAG": 220,
+        "PAGE_WIDTH": 2000,
+        "RIGHT_MARGIN": 150,
+        "BOTTOM_PADDING": 50,
+        "SNAP_GRID": 20,
+        "API_COOLDOWN": 40,
+        "AUTO_PREVIEW_DELAY": 2000,
+        "AUTOSAVE_INTERVAL": 120000
+    }
+}
