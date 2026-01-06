@@ -22,9 +22,9 @@ from pathlib import Path
 BASE_DIR = Path(__file__).parent.resolve()
 
 # ====================== CONFIGURAÇÃO DE DIRETÓRIOS ======================
-IMG_FOLDER = BASE_DIR / "imagens_dev"
-JSON_FOLDER = BASE_DIR / "json_notas"
-ICONS_FOLDER = BASE_DIR / "Notas_Musicais"
+IMG_FOLDER = BASE_DIR / "data" / "imagens_dev"
+JSON_FOLDER = BASE_DIR / "data" / "json_notas"
+ICONS_FOLDER = BASE_DIR / "data" / "Notas_Musicais"
 
 # Garante que as pastas existam
 os.makedirs(IMG_FOLDER, exist_ok=True)

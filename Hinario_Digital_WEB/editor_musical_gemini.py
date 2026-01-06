@@ -41,10 +41,11 @@ import google.generativeai as genai
 # ============================================================================
 
 BASE_DIR = Path(__file__).parent.resolve()
-IMG_FOLDER = BASE_DIR / "musicos_images" 
-JSON_FOLDER = BASE_DIR / "json_notas"    
-ICONS_FOLDER = BASE_DIR / "Notas_Musicais"
-OUTPUT_FOLDER = BASE_DIR / "output"
+
+IMG_FOLDER = BASE_DIR / "data" / "musicos_images"
+JSON_FOLDER = BASE_DIR / "data" / "json_notas"
+ICONS_FOLDER = BASE_DIR / "data" / "Notas_Musicais"
+OUTPUT_FOLDER = BASE_DIR / "data" / "output"
 
 # Garante que as pastas existam
 for folder in [IMG_FOLDER, JSON_FOLDER, ICONS_FOLDER, OUTPUT_FOLDER]:

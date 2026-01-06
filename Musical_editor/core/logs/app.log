@@ -1,0 +1,142 @@
+2026-01-06 14:49:01 - core.logger - INFO - Aplicacao iniciada
+2026-01-06 14:49:01 - core.logger - INFO - ============================================================
+2026-01-06 14:49:01 - core.logger - INFO - INICIANDO APLICACAO
+2026-01-06 14:49:01 - core.logger - INFO - ============================================================
+2026-01-06 14:49:01 - core.logger - INFO - Criando janela principal...
+2026-01-06 14:49:01 - core.logger - DEBUG - IMG_FOLDER: C:\Users\pettt\Projects\HinarioDigital\Musical_editor\core\data\musicos_images
+2026-01-06 14:49:01 - core.logger - DEBUG - JSON_FOLDER: C:\Users\pettt\Projects\HinarioDigital\Musical_editor\core\data\json_notas
+2026-01-06 14:49:01 - core.logger - DEBUG - ICONS_FOLDER: C:\Users\pettt\Projects\HinarioDigital\Musical_editor\core\data\Notas_Musicais
+2026-01-06 14:49:01 - core.logger - DEBUG - OUTPUT_FOLDER: C:\Users\pettt\Projects\HinarioDigital\Musical_editor\core\data\output
+2026-01-06 14:49:01 - core.logger - DEBUG - MINHA_API_KEY configurada: False
+2026-01-06 14:49:01 - core.logger - DEBUG - Estado inicial configurado
+2026-01-06 14:49:01 - core.logger - DEBUG - Timers configurados
+2026-01-06 14:49:01 - core.logger - DEBUG - QGraphicsScene criada
+2026-01-06 14:49:01 - core.logger - INFO - Inicializando UI...
+2026-01-06 14:49:01 - core.logger - DEBUG - Iniciando init_ui
+2026-01-06 14:49:01 - core.logger - DEBUG - Criando LeftPanel
+2026-01-06 14:49:01 - core.logger - INFO - Inicializando LeftPanel
+2026-01-06 14:49:01 - core.logger - INFO - LeftPanel inicializado com sucesso
+2026-01-06 14:49:01 - core.logger - DEBUG - Criando painel central
+2026-01-06 14:49:01 - core.logger - DEBUG - Configurando painel central
+2026-01-06 14:49:01 - core.logger - DEBUG - Criando toolbar
+2026-01-06 14:49:01 - core.logger - DEBUG - Criando MusicalView
+2026-01-06 14:49:01 - core.logger - INFO - Inicializando MusicalView
+2026-01-06 14:49:01 - core.logger - DEBUG - MusicalView inicializada
+2026-01-06 14:49:01 - core.logger - DEBUG - Definindo cena para MusicalView
+2026-01-06 14:49:01 - core.logger - DEBUG - Resetando ghost item
+2026-01-06 14:49:01 - core.logger - DEBUG - Ghost item resetado
+2026-01-06 14:49:01 - core.logger - DEBUG - MusicalView criada e adicionada
+2026-01-06 14:49:01 - core.logger - DEBUG - Criando RightPanel
+2026-01-06 14:49:01 - core.logger - INFO - Inicializando RightPanel
+2026-01-06 14:49:01 - core.logger - INFO - RightPanel inicializado com sucesso
+2026-01-06 14:49:01 - core.logger - DEBUG - init_ui concluido
+2026-01-06 14:49:01 - core.logger - INFO - UI inicializada com sucesso
+2026-01-06 14:49:01 - core.logger - DEBUG - Sinal scene.changed conectado
+2026-01-06 14:49:01 - core.logger - DEBUG - Configurando atalhos de teclado
+2026-01-06 14:49:01 - core.logger - DEBUG - Atalho '1' -> SEMINIMA
+2026-01-06 14:49:01 - core.logger - DEBUG - Atalho '2' -> COLCHEIA
+2026-01-06 14:49:01 - core.logger - DEBUG - Atalho '3' -> MINIMA
+2026-01-06 14:49:01 - core.logger - DEBUG - Atalho '4' -> SEMICOLCHEIA
+2026-01-06 14:49:01 - core.logger - DEBUG - Atalho 'T' -> TAG_VERSO
+2026-01-06 14:49:01 - core.logger - DEBUG - Atalho 'C' -> TAG_CORO
+2026-01-06 14:49:01 - core.logger - DEBUG - Atalho 'F' -> TAG_FINAL
+2026-01-06 14:49:01 - core.logger - DEBUG - Atalho 'R' -> PAUSA SEMINIMA
+2026-01-06 14:49:01 - core.logger - DEBUG - Atalhos configurados com sucesso
+2026-01-06 14:49:01 - core.logger - DEBUG - Atalhos configurados
+2026-01-06 14:49:01 - core.logger - INFO - Chamando refresh_playlists na inicializacao
+2026-01-06 14:49:01 - core.logger - DEBUG - refresh_playlists chamado de MainWindow
+2026-01-06 14:49:01 - core.logger - INFO - === INICIANDO refresh_playlists ===
+2026-01-06 14:49:01 - core.logger - DEBUG - IMG_FOLDER: C:\Users\pettt\Projects\HinarioDigital\Musical_editor\core\data\musicos_images
+2026-01-06 14:49:01 - core.logger - DEBUG - JSON_FOLDER: C:\Users\pettt\Projects\HinarioDigital\Musical_editor\core\data\json_notas
+2026-01-06 14:49:01 - core.logger - INFO - Pasta de imagens existe: C:\Users\pettt\Projects\HinarioDigital\Musical_editor\core\data\musicos_images
+2026-01-06 14:49:01 - core.logger - INFO - Pasta de projetos existe: C:\Users\pettt\Projects\HinarioDigital\Musical_editor\core\data\json_notas
+2026-01-06 14:49:01 - core.logger - DEBUG - Arquivos JSON encontrados: 0
+2026-01-06 14:49:01 - core.logger - DEBUG - Status map final: {}
+2026-01-06 14:49:01 - core.logger - INFO - Atualizando lista de imagens...
+2026-01-06 14:49:01 - core.logger - INFO - Imagens encontradas: 0
+2026-01-06 14:49:01 - core.logger - DEBUG - Arquivos: []
+2026-01-06 14:49:01 - core.logger - INFO - Total de imagens adicionadas: 0
+2026-01-06 14:49:01 - core.logger - INFO - Atualizando lista de projetos...
+2026-01-06 14:49:01 - core.logger - INFO - Projetos encontrados: 0
+2026-01-06 14:49:01 - core.logger - DEBUG - Arquivos JSON: []
+2026-01-06 14:49:01 - core.logger - INFO - Total de projetos adicionados: 0
+2026-01-06 14:49:01 - core.logger - INFO - === refresh_playlists CONCLUÍDO ===
+
+2026-01-06 14:49:01 - core.logger - INFO - APLICACAO INICIALIZADA COM SUCESSO
+2026-01-06 14:49:01 - core.logger - INFO - ============================================================
+
+2026-01-06 14:49:01 - core.logger - INFO - Janela principal exibida
+2026-01-06 14:49:01 - core.logger - DEBUG - Cena alterada
+2026-01-06 14:49:01 - core.logger - DEBUG - Estado salvo no historico (posicao: 0)
+2026-01-06 14:49:01 - core.logger - DEBUG - Titulo atualizado: 1 itens
+2026-01-06 14:52:34 - core.logger - INFO - Aplicacao iniciada
+2026-01-06 14:52:34 - core.logger - INFO - ============================================================
+2026-01-06 14:52:34 - core.logger - INFO - INICIANDO APLICACAO
+2026-01-06 14:52:34 - core.logger - INFO - ============================================================
+2026-01-06 14:52:34 - core.logger - INFO - Criando janela principal...
+2026-01-06 14:52:34 - core.logger - DEBUG - IMG_FOLDER: C:\Users\pettt\Projects\HinarioDigital\Musical_editor\core\data\musicos_images
+2026-01-06 14:52:34 - core.logger - DEBUG - JSON_FOLDER: C:\Users\pettt\Projects\HinarioDigital\Musical_editor\core\data\json_notas
+2026-01-06 14:52:34 - core.logger - DEBUG - ICONS_FOLDER: C:\Users\pettt\Projects\HinarioDigital\Musical_editor\core\data\Notas_Musicais
+2026-01-06 14:52:34 - core.logger - DEBUG - OUTPUT_FOLDER: C:\Users\pettt\Projects\HinarioDigital\Musical_editor\core\data\output
+2026-01-06 14:52:34 - core.logger - DEBUG - MINHA_API_KEY configurada: False
+2026-01-06 14:52:34 - core.logger - DEBUG - Estado inicial configurado
+2026-01-06 14:52:34 - core.logger - DEBUG - Timers configurados
+2026-01-06 14:52:34 - core.logger - DEBUG - QGraphicsScene criada
+2026-01-06 14:52:34 - core.logger - INFO - Inicializando UI...
+2026-01-06 14:52:34 - core.logger - DEBUG - Iniciando init_ui
+2026-01-06 14:52:34 - core.logger - DEBUG - Criando LeftPanel
+2026-01-06 14:52:34 - core.logger - INFO - Inicializando LeftPanel
+2026-01-06 14:52:34 - core.logger - INFO - LeftPanel inicializado com sucesso
+2026-01-06 14:52:34 - core.logger - DEBUG - Criando painel central
+2026-01-06 14:52:34 - core.logger - DEBUG - Configurando painel central
+2026-01-06 14:52:34 - core.logger - DEBUG - Criando toolbar
+2026-01-06 14:52:34 - core.logger - DEBUG - Criando MusicalView
+2026-01-06 14:52:34 - core.logger - INFO - Inicializando MusicalView
+2026-01-06 14:52:34 - core.logger - DEBUG - MusicalView inicializada
+2026-01-06 14:52:34 - core.logger - DEBUG - Definindo cena para MusicalView
+2026-01-06 14:52:34 - core.logger - DEBUG - Resetando ghost item
+2026-01-06 14:52:34 - core.logger - DEBUG - Ghost item resetado
+2026-01-06 14:52:34 - core.logger - DEBUG - MusicalView criada e adicionada
+2026-01-06 14:52:34 - core.logger - DEBUG - Criando RightPanel
+2026-01-06 14:52:34 - core.logger - INFO - Inicializando RightPanel
+2026-01-06 14:52:34 - core.logger - INFO - RightPanel inicializado com sucesso
+2026-01-06 14:52:34 - core.logger - DEBUG - init_ui concluido
+2026-01-06 14:52:34 - core.logger - INFO - UI inicializada com sucesso
+2026-01-06 14:52:34 - core.logger - DEBUG - Sinal scene.changed conectado
+2026-01-06 14:52:34 - core.logger - DEBUG - Configurando atalhos de teclado
+2026-01-06 14:52:34 - core.logger - DEBUG - Atalho '1' -> SEMINIMA
+2026-01-06 14:52:34 - core.logger - DEBUG - Atalho '2' -> COLCHEIA
+2026-01-06 14:52:34 - core.logger - DEBUG - Atalho '3' -> MINIMA
+2026-01-06 14:52:34 - core.logger - DEBUG - Atalho '4' -> SEMICOLCHEIA
+2026-01-06 14:52:34 - core.logger - DEBUG - Atalho 'T' -> TAG_VERSO
+2026-01-06 14:52:34 - core.logger - DEBUG - Atalho 'C' -> TAG_CORO
+2026-01-06 14:52:34 - core.logger - DEBUG - Atalho 'F' -> TAG_FINAL
+2026-01-06 14:52:34 - core.logger - DEBUG - Atalho 'R' -> PAUSA SEMINIMA
+2026-01-06 14:52:34 - core.logger - DEBUG - Atalhos configurados com sucesso
+2026-01-06 14:52:34 - core.logger - DEBUG - Atalhos configurados
+2026-01-06 14:52:34 - core.logger - INFO - Chamando refresh_playlists na inicializacao
+2026-01-06 14:52:34 - core.logger - DEBUG - refresh_playlists chamado de MainWindow
+2026-01-06 14:52:34 - core.logger - INFO - === INICIANDO refresh_playlists ===
+2026-01-06 14:52:34 - core.logger - DEBUG - IMG_FOLDER: C:\Users\pettt\Projects\HinarioDigital\Musical_editor\core\data\musicos_images
+2026-01-06 14:52:34 - core.logger - DEBUG - JSON_FOLDER: C:\Users\pettt\Projects\HinarioDigital\Musical_editor\core\data\json_notas
+2026-01-06 14:52:34 - core.logger - INFO - Pasta de imagens existe: C:\Users\pettt\Projects\HinarioDigital\Musical_editor\core\data\musicos_images
+2026-01-06 14:52:34 - core.logger - INFO - Pasta de projetos existe: C:\Users\pettt\Projects\HinarioDigital\Musical_editor\core\data\json_notas
+2026-01-06 14:52:34 - core.logger - DEBUG - Arquivos JSON encontrados: 0
+2026-01-06 14:52:34 - core.logger - DEBUG - Status map final: {}
+2026-01-06 14:52:34 - core.logger - INFO - Atualizando lista de imagens...
+2026-01-06 14:52:34 - core.logger - INFO - Imagens encontradas: 0
+2026-01-06 14:52:34 - core.logger - DEBUG - Arquivos: []
+2026-01-06 14:52:34 - core.logger - INFO - Total de imagens adicionadas: 0
+2026-01-06 14:52:34 - core.logger - INFO - Atualizando lista de projetos...
+2026-01-06 14:52:34 - core.logger - INFO - Projetos encontrados: 0
+2026-01-06 14:52:34 - core.logger - DEBUG - Arquivos JSON: []
+2026-01-06 14:52:34 - core.logger - INFO - Total de projetos adicionados: 0
+2026-01-06 14:52:34 - core.logger - INFO - === refresh_playlists CONCLUÍDO ===
+
+2026-01-06 14:52:34 - core.logger - INFO - APLICACAO INICIALIZADA COM SUCESSO
+2026-01-06 14:52:34 - core.logger - INFO - ============================================================
+
+2026-01-06 14:52:35 - core.logger - INFO - Janela principal exibida
+2026-01-06 14:52:35 - core.logger - DEBUG - Cena alterada
+2026-01-06 14:52:35 - core.logger - DEBUG - Estado salvo no historico (posicao: 0)
+2026-01-06 14:52:35 - core.logger - DEBUG - Titulo atualizado: 1 itens
