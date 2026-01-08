@@ -21,7 +21,7 @@ from PyQt6.QtGui import QPixmap, QPen, QShortcut, QKeySequence
 
 # Importar de config
 from core.config import (
-    IMG_FOLDER, JSON_FOLDER, GLOBAL_CONFIG, FERRAMENTAS_ORGANIZADAS, MAPA_ATALHOS,
+    IMG_FOLDER, JSON_FOLDER, GLOBAL_CONFIG, FERRAMENTAS_ORGANIZADAS, MAPA_ATALHOS,PREVIEW_FOLDER,
     ICONS_FOLDER, OUTPUT_FOLDER, MINHA_API_KEY
 )
 
@@ -56,6 +56,7 @@ class MainWindow(QMainWindow):
             log_debug(f"IMG_FOLDER: {IMG_FOLDER}")
             log_debug(f"JSON_FOLDER: {JSON_FOLDER}")
             log_debug(f"ICONS_FOLDER: {ICONS_FOLDER}")
+            log_debug(f"PREVIEW_FOLDER: {PREVIEW_FOLDER}")
             log_debug(f"OUTPUT_FOLDER: {OUTPUT_FOLDER}")
             log_debug(f"MINHA_API_KEY configurada: {bool(MINHA_API_KEY)}")
 
@@ -177,7 +178,7 @@ class MainWindow(QMainWindow):
         layout.addSpacing(20)
 
         self.snap_active = QCheckBox("Snap Grid")
-        self.snap_active.setChecked(True)
+        self.snap_active.setChecked(False)
         self.snap_active.setStyleSheet("color: white;")
         layout.addWidget(self.snap_active)
 
@@ -185,9 +186,9 @@ class MainWindow(QMainWindow):
         self.chk_continuous.setStyleSheet("color: white;")
         layout.addWidget(self.chk_continuous)
 
-        self.chk_auto_preview = QCheckBox("Preview Auto")
+        """self.chk_auto_preview = QCheckBox("Preview Auto")
         self.chk_auto_preview.setStyleSheet("color: white;")
-        layout.addWidget(self.chk_auto_preview)
+        layout.addWidget(self.chk_auto_preview)"""
 
         layout.addStretch()
 
@@ -527,8 +528,8 @@ class MainWindow(QMainWindow):
         """Quando cena muda"""
         log_debug("Cena alterada")
         self.save_state()
-        if self.chk_auto_preview.isChecked():
-            self.preview_timer.start(GLOBAL_CONFIG.get("AUTO_PREVIEW_DELAY", 2000))
+        """if self.chk_auto_preview.isChecked():
+            self.preview_timer.start(GLOBAL_CONFIG.get("AUTO_PREVIEW_DELAY", 2000))"""
         self.update_title()
 
     # ========== SALVAMENTO ==========
@@ -805,7 +806,6 @@ class MainWindow(QMainWindow):
         """Exporta folha limpa com recortes"""
         log_info("Iniciando renderizacao de imagem")
         state = self.get_current_state()
-
         if not state:
             log_warning("Nada para exportar")
             QMessageBox.warning(self, "Aviso", "Nada para exportar.")
@@ -820,12 +820,6 @@ class MainWindow(QMainWindow):
 
         # Reconstruir estado ordenado
         ordered_state = notes + specials
-        log_debug(f"Estado atual tem {len(ordered_state)} itens")
-        log_debug(f"Separados: {len(specials)} headers, 0 timesigs, {len(notes)} notas/tags")
-        log_info("Notas ordenadas por Y,X:")
-
-        for idx, item in enumerate(notes):
-            log_debug(f"  {idx+1}. NOTE: {item.get('tipo')} em Y={item.get('y')}, X={item.get('x')}")
 
         # Usar ImageRenderer para renderizar
         renderer = ImageRenderer(self.scene, self.current_image_paths)
@@ -836,21 +830,37 @@ class MainWindow(QMainWindow):
             QMessageBox.warning(self, "Erro", "Falha ao gerar imagem.")
             return
 
-        # Salvar imagem
+        # --- CORREÇÃO AQUI: Usar a variável oficial do paths.py ---
+        # Garante que a pasta 'preview_images' existe
+        try:
+            os.makedirs(PREVIEW_FOLDER, exist_ok=True)
+        except Exception as e:
+            log_error(f"Erro ao criar pasta de previews: {PREVIEW_FOLDER}", e)
+            return
+
+        # Definir nome do arquivo
         base_name = "preview"
         if self.current_json_path:
             base_name = os.path.splitext(os.path.basename(self.current_json_path))[0]
 
-        output_path = os.path.join(OUTPUT_FOLDER, f"{base_name}_export.jpg")
-        pil_image.save(output_path, quality=95)
-        log_info(f"Imagem exportada: {output_path}")
+        # Salva na pasta CORRETA (preview_images)
+        output_path = os.path.join(PREVIEW_FOLDER, f"{base_name}.jpg")
 
         try:
-            os.startfile(output_path)
-        except:
-            pass
+            pil_image.save(output_path, quality=95)
+            log_info(f"Imagem exportada para pasta de previews: {output_path}")
 
-        QMessageBox.information(self, "Sucesso", f"Imagem exportada:\n{output_path}")
+            try:
+                os.startfile(output_path)
+            except:
+                pass
+
+            QMessageBox.information(self, "Sucesso", f"Imagem salva na pasta de previews:\n{output_path}")
+
+        except Exception as e:
+            log_error(f"Erro ao salvar imagem de preview em {output_path}", e)
+            QMessageBox.critical(self, "Erro", f"Não foi possível salvar a imagem:\n{str(e)}")
+
 
     def update_tool_display(self, tool_name):
         """Atualiza exibicao da ferramenta no painel direito"""

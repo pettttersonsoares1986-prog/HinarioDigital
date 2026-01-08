@@ -7,7 +7,7 @@ from PyQt6.QtWidgets import (
 from PyQt6.QtGui import QPixmap, QImage
 from PyQt6.QtCore import Qt, QTimer
 from PIL import Image
-from core.config import GLOBAL_CONFIG, IMG_FOLDER, OUTPUT_FOLDER
+from core.config import GLOBAL_CONFIG, IMG_FOLDER, OUTPUT_FOLDER,PREVIEW_FOLDER
 import os
 from core.logger import log_info, log_debug, log_error
 
@@ -264,9 +264,13 @@ class PreviewDialog(QDialog):
             self.btn_gemini.setText("🤖 Enviar para Gemini")
 
     def save_file(self):
-        """Salva a imagem em arquivo"""
+        """Salva a imagem na pasta de PREVIEWS"""
         log_info(f"Salvando imagem: {self.base_filename}")
-        save_path = os.path.join(IMG_FOLDER, f"{self.base_filename}.jpg")
+
+        # Garante que a pasta existe
+        os.makedirs(PREVIEW_FOLDER, exist_ok=True)
+
+        save_path = os.path.join(PREVIEW_FOLDER, f"{self.base_filename}.jpg")
         try:
             self.pil_image.convert("RGB").save(save_path, quality=95)
             log_debug(f"Imagem salva em: {save_path}")

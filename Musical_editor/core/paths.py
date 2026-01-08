@@ -38,8 +38,10 @@ BASE_DIR = get_base_dir()
 PARENT_DIR = get_parent_dir()
 
 # Diretórios de dados
-DATA_DIR = BASE_DIR / "data"
-IMG_FOLDER = DATA_DIR / "musicos_images"
+DATA_DIR = Path(sys.executable).parent / "data" if getattr(sys, 'frozen', False) else BASE_DIR / "data"
+
+IMG_FOLDER = DATA_DIR / "musicos_images"      # Pasta das imagens originais (para editar)
+PREVIEW_FOLDER = DATA_DIR / "preview_images"  # <--- NOVA PASTA (para os previews)
 JSON_FOLDER = DATA_DIR / "json_notas"
 ICONS_FOLDER = DATA_DIR / "Notas_Musicais"
 OUTPUT_FOLDER = DATA_DIR / "output"
@@ -52,7 +54,7 @@ LOG_FILE = LOGS_DIR / "app.log"
 CONFIG_FILE = PARENT_DIR / ".env"
 
 # Criar pastas se não existirem
-for folder in [DATA_DIR, IMG_FOLDER, JSON_FOLDER, ICONS_FOLDER, OUTPUT_FOLDER, LOGS_DIR]:
+for folder in [DATA_DIR, IMG_FOLDER, PREVIEW_FOLDER, JSON_FOLDER, ICONS_FOLDER, OUTPUT_FOLDER, LOGS_DIR]:
     os.makedirs(folder, exist_ok=True)
 
 # Função auxiliar para obter caminho absoluto

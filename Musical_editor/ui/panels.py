@@ -5,12 +5,13 @@ import json
 from functools import partial
 from PyQt6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QLabel,
-    QScrollArea, QGroupBox, QGridLayout, QSplitter, QListWidgetItem
+    QScrollArea, QGroupBox, QGridLayout, QSplitter, QListWidgetItem,QMessageBox
 )
 from PyQt6.QtCore import Qt, QSize
 from PyQt6.QtGui import QIcon, QBrush, QColor
 
-from core.config import FERRAMENTAS_ORGANIZADAS, IMG_FOLDER, JSON_FOLDER
+
+from core.config import FERRAMENTAS_ORGANIZADAS, IMG_FOLDER, JSON_FOLDER, OUTPUT_FOLDER,PREVIEW_FOLDER
 from core.cache import ImageCache
 from ui.list_widgets import ImageListWidget, ProjectListWidget
 from core.utils import natural_sort_key
@@ -28,27 +29,25 @@ class LeftPanel(QWidget):
         layout = QVBoxLayout(self)
         splitter = QSplitter(Qt.Orientation.Vertical)
 
-        # Lista de Imagens
+        # --- 1. Lista de Imagens (Originais) ---
         widget_images = QWidget()
         layout_images = QVBoxLayout(widget_images)
         layout_images.setContentsMargins(0, 0, 0, 0)
-        layout_images.addWidget(QLabel("<b>IMAGENS (Arraste daqui)</b>"))
-
+        layout_images.addWidget(QLabel("<b>IMAGENS (Originais)</b>"))
         self.list_images = ImageListWidget()
         self.list_images.itemDoubleClicked.connect(self.main.start_edit_from_image)
         layout_images.addWidget(self.list_images)
 
-        btn_merge = QPushButton("⬇ Criar Projeto com Selecionados")
+        btn_merge = QPushButton("⬇ Criar Projeto")
         btn_merge.setStyleSheet("background-color: #2980b9; color: white; padding: 5px;")
         btn_merge.clicked.connect(self.main.merge_selected_images)
         layout_images.addWidget(btn_merge)
 
-        # Lista de Projetos
+        # --- 2. Lista de Projetos ---
         widget_projects = QWidget()
         layout_projects = QVBoxLayout(widget_projects)
         layout_projects.setContentsMargins(0, 0, 0, 0)
         layout_projects.addWidget(QLabel("<b>PROJETOS SALVOS</b>"))
-
         self.list_projects = ProjectListWidget(self.main)
         self.list_projects.itemDoubleClicked.connect(self.main.on_project_double_click)
         layout_projects.addWidget(self.list_projects)
@@ -58,8 +57,21 @@ class LeftPanel(QWidget):
         btn_del_proj.setStyleSheet("background-color: #c0392b; color: white; padding: 5px;")
         layout_projects.addWidget(btn_del_proj)
 
+        # --- 3. NOVA LISTA: Previews Gerados ---
+        widget_previews = QWidget()
+        layout_previews = QVBoxLayout(widget_previews)
+        layout_previews.setContentsMargins(0, 0, 0, 0)
+        layout_previews.addWidget(QLabel("<b>PREVIEWS GERADOS</b>"))
+
+        self.list_previews = ImageListWidget() # Reusamos o widget de lista de imagens
+        self.list_previews.itemDoubleClicked.connect(self.open_preview) # Duplo clique abre a imagem
+        layout_previews.addWidget(self.list_previews)
+
+        # Adiciona os 3 widgets ao splitter
         splitter.addWidget(widget_images)
         splitter.addWidget(widget_projects)
+        splitter.addWidget(widget_previews)
+
         layout.addWidget(splitter)
 
         btn_refresh = QPushButton("🔄 Atualizar Listas")
@@ -67,6 +79,21 @@ class LeftPanel(QWidget):
         layout.addWidget(btn_refresh)
 
         log_info("LeftPanel inicializado com sucesso")
+
+    def open_preview(self, item):
+        """Abre o arquivo de preview ao clicar duas vezes"""
+        filename = item.text().replace("✅ ", "").replace("🖼️ ", "")
+        # USA A VARIÁVEL DO PATHS.PY
+        path = os.path.join(PREVIEW_FOLDER, filename)
+
+        if os.path.exists(path):
+            try:
+                os.startfile(path)
+                log_info(f"Abrindo preview: {path}")
+            except Exception as e:
+                log_error(f"Erro ao abrir preview {path}", e)
+        else:
+            QMessageBox.warning(self, "Erro", f"Arquivo não encontrado em:\n{path}")
 
     def refresh_playlists(self):
         """Atualiza listas de imagens e projetos"""
@@ -182,6 +209,77 @@ class LeftPanel(QWidget):
 
         log_info("=== refresh_playlists CONCLUÍDO ===\n")
 
+        # === Preparar um mapa de status (ler todos os JSONs uma vez) ===
+        status_map = {}  # chave: nome base do arquivo (ex: "1" ou "1.png" dependendo do seu JSON), valor: "concluido"|"em_andamento"
+        if os.path.exists(JSON_FOLDER):
+            try:
+                json_files = glob.glob(os.path.join(JSON_FOLDER, "*.json"))
+                for jf in json_files:
+                    try:
+                        with open(jf, "r", encoding="utf-8") as f:
+                            data = json.load(f)
+                            # Ajuste aqui conforme sua estrutura de JSON:
+                            # Se o JSON tiver campo "image" ou uma lista "images", use ele.
+                            # Vou tentar mapear pelo nome do json: se for "1.json" -> chave "1"
+                            base_json = os.path.splitext(os.path.basename(jf))[0]
+                            status = data.get("status", "em_andamento")
+                            # grava tanto com chave simples quanto com extensão png/jpg para facilitar lookup
+                            status_map[base_json] = status
+                            status_map[f"{base_json}.png"] = status
+                            status_map[f"{base_json}.jpg"] = status
+                            # se o JSON listar imagens explicitamente:
+                            if "images" in data and isinstance(data["images"], list):
+                                for imgname in data["images"]:
+                                    status_map[imgname] = status
+                    except Exception as e:
+                        log_error(f"Erro ao ler JSON {jf}: {e}")
+            except Exception as e:
+                log_error(f"Erro ao listar arquivos JSON em {JSON_FOLDER}: {e}")
+
+        # --- 3. LISTA DE PREVIEWS ---
+        # Adiciona ícones pois a função open_preview vai tratar o nome
+        # === 3. LISTA DE PREVIEWS ===
+        self.list_previews.clear()
+
+        if not os.path.exists(PREVIEW_FOLDER):
+            try:
+                os.makedirs(PREVIEW_FOLDER, exist_ok=True)
+            except Exception:
+                pass
+
+        if os.path.exists(PREVIEW_FOLDER):
+            try:
+                previews = glob.glob(os.path.join(PREVIEW_FOLDER, "*.jpg"))
+                previews.sort(key=natural_sort_key)
+
+                for p_path in previews:
+                    p_name = os.path.basename(p_path)          # ex: "1.jpg"
+                    base_name = os.path.splitext(p_name)[0]   # ex: "1"
+                    item = QListWidgetItem(p_name)            # mantemos o texto limpo (open_preview vai tratar se necessário)
+
+                    # procura status no mapa de formas alternativas
+                    status = None
+                    # checagens com as chaves que colocamos em status_map
+                    for key in (p_name, f"{base_name}.png", f"{base_name}.jpg", base_name):
+                        if key in status_map:
+                            status = status_map[key]
+                            break
+                    if status  == "concluido":
+                        item.setText(f"✅ {p_name}")
+                        item.setForeground(QBrush(QColor("#27ae60")))
+                    elif status == "em_andamento":                    
+                        item.setText(f"🚧 {p_name}")
+                        item.setForeground(QBrush(QColor("#d35400")))
+                    else:
+                        # sem status encontrado -> apenas preview (roxo)
+                        item.setText(f"❓ {p_name}")
+                        item.setForeground(QBrush(QColor("#8e44ad")))
+                    self.list_previews.addItem(item)
+
+                log_info(f"Total de previews adicionados: {self.list_previews.count()}")
+
+            except Exception as e:
+                log_error(f"Erro ao listar previews em {PREVIEW_FOLDER}: {e}")
 
 class RightPanel(QWidget):
     def __init__(self, main_window):

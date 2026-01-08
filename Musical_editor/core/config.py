@@ -3,7 +3,7 @@
 import os
 import json
 from dotenv import load_dotenv
-from core.paths import BASE_DIR, IMG_FOLDER, JSON_FOLDER, ICONS_FOLDER, OUTPUT_FOLDER
+from core.paths import BASE_DIR, IMG_FOLDER, JSON_FOLDER, ICONS_FOLDER, OUTPUT_FOLDER,PREVIEW_FOLDER
 from core.logger import log_debug, log_error
 from pathlib import Path
 
@@ -120,5 +120,6 @@ def print_config():
     print(f"Imagens: {IMG_FOLDER}")
     print(f"JSON: {JSON_FOLDER}")
     print(f"Icones: {ICONS_FOLDER}")
+    print(f"PREVIEW_FOLDER: {PREVIEW_FOLDER}")
     print(f"Output: {OUTPUT_FOLDER}")
     print(f"API Key configurada: {bool(MINHA_API_KEY)}")
