@@ -3,7 +3,7 @@ import os
 
 # --- CAMINHOS ---
 # Ajuste o caminho conforme sua necessidade real
-HINOS_FOLDER_PATH = os.path.normpath(r"C:\Users\psoares\pyNestle\Private\Hinario_Digital\textos_corrigidos")
+HINOS_FOLDER_PATH = os.path.normpath(r"C:\Users\pettt\Projects\HinarioDigital\Hinario_Digital\textos_corrigidos")
 CONFIG_DB_FILE = 'config.db'
 
 # --- CONSTANTES GLOBAIS ---
