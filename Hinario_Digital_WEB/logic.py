@@ -3,17 +3,55 @@ import json
 import re
 from config import config_manager, HINOS_FOLDER_PATH
 
-# --- CONSTANTES MUSICAIS ---
+# --- CONSTANTES DE ESTRUTURA (Para referência ou uso futuro) ---
+TAGS_ESTRUTURA = ["TAG_VERSO", "TAG_CORO", "TAG_FINAL"]
+
+# --- DEFINIÇÃO DE VALORES DE DURAÇÃO (Base: Seminima = 1.0) ---
+# Aqui usamos EXATAMENTE os nomes que você forneceu.
 NOTE_DURATIONS_BASE = {
-    "sm": 1.0, "m": 2.0, "c": 0.5, "sc": 0.25, "sb": 4.0, "cp": 0.75, 
-    "rl": 0.0, "rc": 0.0, "pc": 0.0, "pl": 0.0 
+    # Notas Simples
+    "SEMIBREVE": 4.0,
+    "MINIMA": 2.0,
+    "SEMINIMA": 1.0,
+    "COLCHEIA": 0.5,
+    "SEMICOLCHEIA": 0.25,
+
+    # Notas Pontuadas (Valor + 50%)
+    "MINIMA PONTUADA": 3.0,
+    "SEMINIMA PONTUADA": 1.5,
+    "COLCHEIA PONTUADA": 0.75,
+    "SEMICOLCHEIA PONTUADA": 0.375,
+
+    # Pausas (Mesma duração das notas, mas som mudo)
+    "PAUSA SEMIBREVE": 4.0,
+    "PAUSA MINIMA": 2.0,
+    "PAUSA SEMINIMA": 1.0,
+    "PAUSA COLCHEIA": 0.5,
+    "PAUSA SEMICOLCHEIA": 0.25,
+
+    # Pausas Pontuadas
+    "PAUSA SEMINIMA PONTUADA": 1.5,
+    "PAUSA COLCHEIA PONTUADA": 0.75,
+    "PAUSA SEMICOLCHEIA PONTUADA": 0.375,
+
+    # Outros (Tempos fixos ou especiais)
+    "RESPIRACAO CURTA": 0.0, # Tempo definido em config
+    "RESPIRACAO LONGA": 0.0, # Tempo definido em config
+
+    # Fermatas (Baseadas na nota original, o cálculo aplica o fator depois)
+    "FERMATA MINIMA": 2.0,
+    "FERMATA SEMINIMA": 1.0,
+    "FERMATA COLCHEIA": 0.5
 }
-NOTE_CODES = list(NOTE_DURATIONS_BASE.keys()) + [f"{k}_fermata" for k in NOTE_DURATIONS_BASE.keys() if k not in ["rl", "rc", "pc", "pl"]]
+
+# Lista ordenada para aparecer nos ComboBoxes do Editor
+NOTE_CODES = list(NOTE_DURATIONS_BASE.keys())
 
 # --- FUNÇÕES ---
 
 def get_syllable_tokens(text_line):
-    """ Separa tokens (palavras e pausas). A vírgula é ignorada. """
+    """ Separa tokens (palavras e pausas). """
+    if text_line is None: return []
     padrao = r'(__|\'\'|[_"\-]|\s+)'
     tokens_raw = re.split(padrao, text_line)
     lista_final = []
@@ -28,51 +66,90 @@ def get_syllable_tokens(text_line):
             simbolos_pausa = ["''", '"', "_", "__"]
             if token_limpo in simbolos_pausa: lista_final.append(token_limpo)
             else:
-                limpo = re.sub(r'[^\w\',~\-.;:!?]', '', token) 
-                if limpo or token_limpo in [",", ";", ".", "!", "?", ":"]: 
-                    lista_final.append(token)
+                lista_final.append(token)
     return lista_final
 
-def ler_arquivo_hino(num):
-    for f in [f"hino_{num:03d}.json", f"hino_{num}.json"]:
-        p = os.path.join(HINOS_FOLDER_PATH, f)
-        if os.path.exists(p):
-            try: 
-                with open(p, 'r', encoding='utf-8') as file: return json.load(file)
-            except: pass
-    return None
+def ler_arquivo_hino(numero):
+    """
+    Lê o JSON diretamente. Não precisa mais converter nada,
+    pois o JSON já está no formato que o código entende.
+    """
+    caminho = os.path.join(HINOS_FOLDER_PATH, f"{numero}.json")
 
-def carregar_dados_json():
-    if not os.path.exists(HINOS_FOLDER_PATH): 
-        try: os.makedirs(HINOS_FOLDER_PATH)
-        except: pass
-        return 0
-    max_n = 0
-    pat = re.compile(r"^hino_(\d+)")
-    for f in os.listdir(HINOS_FOLDER_PATH):
-        m = pat.match(f)
-        if m: max_n = max(max_n, int(m.group(1)))
-    return max_n
+    # Fallback para formato antigo hino_001 se necessário
+    if not os.path.exists(caminho):
+        caminho_antigo = os.path.join(HINOS_FOLDER_PATH, f"hino_{numero:03d}.json")
+        if os.path.exists(caminho_antigo):
+            caminho = caminho_antigo
+        else:
+            return None
 
-def calcular_duracao_ms(code, bpm, unidade_bpm="sm"):
+    try:
+        with open(caminho, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+
+        # Adaptação leve: Se o JSON vier com "silabas", transformamos para
+        # listas planas (texto_silabado e notas_codes) para facilitar o Player/Editor,
+        # mas mantendo os nomes originais ("SEMINIMA", etc).
+        if 'estrofes' in data:
+            for estrofe in data['estrofes']:
+                linhas = estrofe.get('linhas', [])
+                for linha in linhas:
+                    if 'silabas' in linha:
+                        # Extrai as listas planas
+                        txts = []
+                        notas = []
+                        for s in linha['silabas']:
+                            t = s.get('texto')
+                            n = s.get('nota', 'SEMINIMA') # Default seguro
+
+                            # Normaliza para Maiúsculas para garantir match com NOTE_DURATIONS_BASE
+                            n = n.upper() 
+
+                            if t is not None: txts.append(t)
+                            notas.append(n)
+
+                        # Reconstrói texto concatenado
+                        texto_final = ""
+                        for i, t in enumerate(txts):
+                            texto_final += t
+                            if i < len(txts) - 1 and not t.endswith('-'):
+                                texto_final += " "
+
+                        linha['texto_silabado'] = texto_final
+                        linha['notas_codes'] = notas
+
+        return data
+
+    except Exception as e:
+        print(f"Erro ao ler hino {numero}: {e}")
+        return None
+
+def calcular_duracao_ms(nota_nome, bpm, unidade_bpm="SEMINIMA"):
+    """ Calcula duração em ms baseada no nome completo da nota. """
     if bpm <= 0: return 500
-    nota_code = code.strip().lower()
-    fermata = "_fermata" in nota_code
-    if fermata: nota_code = nota_code.replace("_fermata", "")
 
-    # Tempos fixos
-    if nota_code == 'rc': return config_manager.get('time_rc', int) or 300
-    if nota_code == 'pc': return config_manager.get('time_pc', int) or 500
-    if nota_code == 'rl': return config_manager.get('time_rl', int) or 800
-    if nota_code == 'pl': return config_manager.get('time_pl', int) or 1000
+    nota_nome = nota_nome.upper() # Garante consistência
+
+    # Tempos fixos (Respirações/Pausas específicas se configuradas)
+    if "RESPIRACAO CURTA" in nota_nome: return config_manager.get('time_rc', int) or 300
+    if "RESPIRACAO LONGA" in nota_nome: return config_manager.get('time_rl', int) or 800
+    if "PAUSA CURTA" in nota_nome: return config_manager.get('time_pc', int) or 500 # Caso usem nomes antigos
+
+    # Verifica se é Fermata para aplicar fator extra
+    is_fermata = "FERMATA" in nota_nome
+
+    # Pega a duração base do dicionário
+    fator_nota = NOTE_DURATIONS_BASE.get(nota_nome, 1.0)
 
     # Cálculo matemático
     ms_por_batida = 60000 / bpm
     valor_base_unidade = NOTE_DURATIONS_BASE.get(unidade_bpm, 1.0)
+
     ms_seminima = ms_por_batida / valor_base_unidade
-    fator_nota = NOTE_DURATIONS_BASE.get(nota_code, 1.0)
     ms = ms_seminima * fator_nota
-    
-    if fermata: ms *= config_manager.get('fermata_factor', float)
-    
+
+    if is_fermata:
+        ms *= config_manager.get('fermata_factor', float) or 2.0
+
     return max(50, int(ms))
